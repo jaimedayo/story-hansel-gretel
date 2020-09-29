@@ -36,9 +36,9 @@ public void setup() {
 	fireon = loadImage("img/fireOn.png");
 	fireoff = loadImage("img/fireOff.png");
 	fondo = loadImage("img/fondo 1.png");
-	forest = loadImage("img/fores.png");
+	forest = loadImage("img/forest.png");
 	kids = loadImage("img/kids.png");
-	migajas = loadImage("img/migajas.png");
+	migajas = loadImage("img/migaja.png");
 	moon = loadImage("img/moon.png");
 	skyn = loadImage("img/skyn.png");
 	skym = loadImage("img/skym.png");
@@ -48,7 +48,24 @@ public void setup() {
 
 public void draw(){
 	//vista del escenario
-	image(skym, 0, 0);
+	
 	image(back, 0, 100);
+	image(floor,0,0);
+	image (forest,0,0);
+	
+	//personajes
+	image(kids,0,0);
+	image (migajas,0,0);
+	image (ave,0,0);
+	image (fireon,0,0);
+	image (fireoff,0,0);
+	
+	
+	//cielo
+	image (sun,0,0);
+	image (moon,0,0);
+	image(skym, 0, 0);
+	image(skyn, 0, 0);
+	
 	}
 }
