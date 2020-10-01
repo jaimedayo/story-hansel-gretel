@@ -7,9 +7,9 @@ Bird paloma;
 Campfire fire;
 SunMoon sun;
 
-float x0;
-float x1;
-float x2;
+
+
+
 
 public void flyG() {
 	
@@ -23,7 +23,11 @@ public void night() {
 public void fire() {
 	
 }
-public void backMove() {
+public void bread() {
+	
+}
+public void backMove(float x0,float x1,float x2) {
+	
 	
 }
 

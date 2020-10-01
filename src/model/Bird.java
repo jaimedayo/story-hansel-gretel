@@ -12,19 +12,27 @@ public boolean state;
 		super(posX, posY);
 		// TODO Auto-generated constructor stub
 	}
-void moveBird(float x,float y){
+void flyG(float x,float y){
+	
+	if(posX==x&&posY==y) {state=false;}
+	
 	if (state==true) {
-		if(posX==x&&posY==y) {
-			state=false;
 		}else {
 		if(posX < x) {posX++;}else {posX--;}
 		if(posY < y) {posY++;}else {posY--;}
-		}
-	}
-	if (state==true){
 		
 	}
-	
+}
+	void flyB(float x,float y){
+		
+		if(posX==x&&posY==y) {state=true;}
+		
+		if (state==false) {
+			if(posX < x) {posX++;}else {posX--;}
+			if(posY < y) {posY++;}else {posY--;}
+			}
+		
+		
 }
 public float getX() {
 		return posX;
