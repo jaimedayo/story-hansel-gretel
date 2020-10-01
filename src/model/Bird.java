@@ -25,10 +25,12 @@ void moveBird(float x,float y){
 		
 	}
 	
-}public float getX() { if(state==true) {
-		return posX;}else { return 50;}
-	}
-	public float getY() {if(state==true) {
-		return posY;}else { return 70;}
-	}
+}
+public float getX() {
+		return posX;
+}
+	public float getY() {
+		return posY;
+		}
+	
 }

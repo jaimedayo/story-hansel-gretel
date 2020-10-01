@@ -1,4 +1,5 @@
 package view;
+import controller.Controller;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -6,6 +7,7 @@ import processing.core.PImage;
 
 public class Mainscreen extends PApplet {
 
+	private  Controller controller;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PApplet.main(Mainscreen.class.getName());
