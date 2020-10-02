@@ -12,5 +12,11 @@ public class Campfire extends Elements {
 public boolean getState() {
 	return state;
 }
+public void  setFireOn(){
+	state=true;
+}
+public void  setFireOff(){
+	state=false;
+}
 
 }
