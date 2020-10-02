@@ -77,21 +77,21 @@ public void draw() {
 public void mousepressed() {
 	
 	//sun controller
-if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
+if(app.mouseX>=s.posX&&app.mouseX<=(s.posX+133)  &&  app.mouseY>=s.posY&&app.mouseY<=(s.posY+233) ) {
 		
 	day();
 	}
 	
 
 	//fire controller
-if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
+if(app.mouseX>=fire.posX&app.mouseX<=(fire.posX+102)  &&  app.mouseY>=fire.posY&&app.mouseY<=fire.posY+81 ) {
 	
 	controlFire();
 	}
 
 
 //brothers controller
-if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
+if(app.mouseX>=bro.posX&app.mouseX<=(bro.posX+185) &&  app.mouseY>=bro.posY&&app.mouseY<=(bro.posY+165)) {
 	
 	if(bro.getBread()==false) {
 	bro.setBreadOn();
@@ -100,7 +100,7 @@ if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
 
 
 //bird go up controller
-if(app.mouseX>=p.posX&&app.mouseX<=(p.posX+70)  &&  app.mouseY>=p.posY&&app.mouseY<=(p.posY+70) ) {
+if(app.mouseX>=p.posX&&app.mouseX<=(p.posX+100)  &&  app.mouseY>=p.posY&&app.mouseY<=(p.posY+100) ) {
 	
 	bro.setBreadOff();
 	p.setflyB();

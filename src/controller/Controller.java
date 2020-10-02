@@ -32,7 +32,12 @@ public void start() {
 public void draw() {
 	
 	logic.draw();
-	
+	logic.hour();
+	logic.back();
+	logic.kid();
+	logic.fire();
+
+	logic.flyG(150,450,170,100);
 	
 	
 }
