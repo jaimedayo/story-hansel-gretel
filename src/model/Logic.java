@@ -1,6 +1,18 @@
 package model;
 import processing.core.PImage;
 import processing.core.PApplet;
+import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 
@@ -121,13 +133,42 @@ if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
 public void keyPressed() {
 	if(app.keyCode==app.RIGHT) {
 	backMove();
-	}}
+	}
+	}
 
-public void read() {
+public void read() throws IOException {
 	
 	
+		List<String> lista =new ArrayList<>();
+		try(FileReader	fr	= new FileReader("text/cuento.txt");
+		BufferedReader br=new BufferedReader(fr)){
+String linea;
+
+while((linea = br.readLine()) != null) {
+	lista.add(linea);
 }
-	
+
+System.out.println("Cantidad de registros: " + lista.size());
+
+String [] arreglo = new String[lista.size()]; // Copiar el contenido de la lista a un arreglo de Strings, esto es opcional pero seguramente es una tarea escolar
+for(int i = 0; i < lista.size(); i++)
+{
+    arreglo[i] = lista.get(i);
+}
+
+System.out.println(Arrays.toString(arreglo));
+} 
+catch (FileNotFoundException e)
+{
+e.printStackTrace();
+} 
+catch (IOException e)
+{
+e.printStackTrace();
+}
+
+}
+
 
 public void kid() {
 	

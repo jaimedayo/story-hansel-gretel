@@ -1,4 +1,12 @@
 package view;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import controller.Controller;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -52,13 +60,52 @@ public void setup() {
 	skyn = loadImage("img/skyn.png");
 	skym = loadImage("img/skym.png");
 	sun = loadImage("img/sun.png");
+	try {
+		read();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+
+
+
+public void draw(){
+}
+
+public void read() throws IOException {
+	
+	
+	List<String> lista =new ArrayList<>();
+	try(FileReader	fr	= new FileReader("text/cuento.txt");
+	BufferedReader br=new BufferedReader(fr)){
+String linea;
+
+while((linea = br.readLine()) != null) {
+lista.add(linea);
+}
+
+System.out.println("Cantidad de registros: " + lista.size());
+
+String [] arreglo = new String[lista.size()]; // Copiar el contenido de la lista a un arreglo de Strings, esto es opcional pero seguramente es una tarea escolar
+for(int i = 0; i < lista.size(); i++)
+{
+arreglo[i] = lista.get(i);
 
 }
 
-public void draw(){
-	
-	
-	controller.draw();
-	
-	}
+System.out.println(Arrays.toString(arreglo));
+} 
+catch (FileNotFoundException e)
+{
+e.printStackTrace();
+} 
+catch (IOException e)
+{
+e.printStackTrace();
+}
+
+}
+
+
 }
