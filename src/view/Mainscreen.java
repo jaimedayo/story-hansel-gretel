@@ -1,6 +1,5 @@
 package view;
 import controller.Controller;
-import model.Logic;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -9,7 +8,7 @@ import processing.core.PImage;
 public class Mainscreen extends PApplet {
 
 	private  Controller controller;
-	private Logic logic;
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -37,8 +36,8 @@ public class Mainscreen extends PApplet {
 		size(600,600);
 	}
 public void setup() {
-	logic = new Logic(null);
-	controller = new Controller(); 
+
+	controller = new Controller(this); 
 	
 	back = loadImage("img/back.png");
 	floor = loadImage("img/floor.png");
@@ -58,26 +57,8 @@ public void setup() {
 
 public void draw(){
 	
-	//vista del escenario
 	
-	image(back, 0, 100);
-	image(floor,0,0);
-	image (forest,0,0);
-	
-	//personajes
-	image(kids,0,0);
-	image (migajas,0,0);
-	image (ave,0,0);
-	image (fireon,0,0);
-	image (fireoff,0,0);
-	
-	
-	//cielo
-	image (sun,0,0);
-	image (moon,0,0);
-	image(skym, 0, 0);
-	image(skyn, 0, 0);
-	
+	controller.draw();
 	
 	}
 }

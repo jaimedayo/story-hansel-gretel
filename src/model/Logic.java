@@ -49,7 +49,7 @@ public void setup() {
   
 s = new SunMoon(400,90,true);
 
-p = new Bird(170,100,true);
+p = new Bird(470,100,true);
 
 fire = new Campfire(150,430,true) ;
 
@@ -63,17 +63,59 @@ public void draw() {
 	
 	back();
 	
-	if(bro.getBread()) {
-	bread(bro.posX,bro.posY,150,450);
-	}
+	kid();
+	
 	fire();
 	
-	app.image(kids,bro.posX,bro.posY);
+	
+	
+	flyG(150,450,170,100);
+	
 	
 	
 }
 public void mousepressed() {
 	
+	//sun controller
+if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
+		
+	day();
+	}
+	
+
+	//fire controller
+if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
+	
+	controlFire();
+	}
+
+
+//brothers controller
+if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
+	
+	if(bro.getBread()==false) {
+	bro.setBreadOn();
+	}
+}
+
+
+//bird go up controller
+if(app.mouseX>=p.posX&&app.mouseX<=(p.posX+70)  &&  app.mouseY>=p.posY&&app.mouseY<=(p.posY+70) ) {
+	
+	bro.setBreadOff();
+	p.setflyB();
+}
+
+
+//bird go down controller
+if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
+	
+	if(bro.getBread()) {
+		p.setflyG();
+	}
+	
+}
+
 	
 }
 public void keyPressed() {
@@ -86,15 +128,30 @@ public void read() {
 	
 }
 	
-void flyG(float x,float y,float x1,float y1){
+
+public void kid() {
+	
+	app.image(kids,bro.posX,bro.posY);
+	if(bro.getBread()) {
+		
+	bread(bro.posX,bro.posY,150,450);
+	}
+	}
+
+
+public void flyG(float x,float y,float x1,float y1){
 	
 	if (p.state) {
 		
 		if(p.posX < x) {p.posX ++;}else {p.posX --;}
 		if(p.posY < y) {p.posY ++;}else {p.posY --;}
+		
+		app.image (ave,p.posX,p.posY);
 		}else{
 			if(p.posX < x1) {p.posX ++;}else {p.posX --;}
 			if(p.posY < y1) {p.posY ++;}else {p.posY --;}
+			
+			app.image (ave,p.posX,p.posY);
 			
 		
 		}
@@ -154,7 +211,7 @@ public void backMove() {
 	x1=(float) (x1*1.5);
 	x2=(float) (x2*1.9);
 	}}
-	void back() {
+	public void back() {
 
 		app.image(back, x0, 100);
 		app.image(floor,x1,200);
