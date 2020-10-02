@@ -12,4 +12,10 @@ public class Brothers extends Elements{
 public boolean getBread() {
 	return state;
 }
+public void setBreadOn() {
+	state=true;
+}
+public void setBreadOff() {
+	state=false;
+}
 }
