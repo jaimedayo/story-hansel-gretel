@@ -69,5 +69,6 @@ public void draw(){
 	image(skym, 0, 0);
 	image(skyn, 0, 0);
 	
+	
 	}
 }

@@ -12,4 +12,11 @@ public boolean state;
 public boolean getState() {
 	return state;
 }
+
+public void setDay() {
+	state=true;
+}
+public void setNight() {
+	state=false;
+}
 }

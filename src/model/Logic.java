@@ -8,12 +8,10 @@ import processing.core.PApplet;
 public class Logic {
 	private PApplet app;
 
+
 public Logic(PApplet app) {
 	this.app = app;
-}
-private PImage im;
-public Logic(PImage im) {
-	this.im = im;
+	
 }
 	PImage back;
 	PImage  floor;
@@ -29,17 +27,24 @@ public Logic(PImage im) {
 	PImage  skyn;
 	PImage  sun;
 	
+	float breadx;
+float bready;
 SunMoon s;
 Campfire fire;	
 Brothers bro;
 Bird p;
+
+
+float x0,x1,x2;
 
  	public void settings() {
 		app.size(600,600);
 	}
 public void setup() {
 	
-	
+	x0=0;
+	x1=0;
+	x2=0;
 
   
 s = new SunMoon(400,90,true);
@@ -56,6 +61,7 @@ public void draw() {
 	
 	if(bro.getBread()) {
 	bread(bro.posX,bro.posY,150,450);
+	
 	}
 	
 }
@@ -73,6 +79,15 @@ public void read() {
 
 public void night() {
 	
+	
+}
+public void day() {
+	if(s.getState()) {
+		
+	}else {
+		
+	}
+	
 }
 public void fire() {
 	
@@ -81,18 +96,19 @@ public void fire() {
 	
 void bread(float ix,float iy,float fx,float fy) {
 	
-	image (migajas,ix,ix);
+	if(ix < fx) {ix++;}else {ix--;}
+	if(iy < fy) {iy++;}else {iy--;}
+	
+	app.image (migajas,ix, iy);
+
 }
 
-private void image(PImage migajas2, float ix, float ix2) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-public void backMove(float x0,float x1,float x2) {
-	
-	
+public void backMove() {
+	if(x0<=50) {
+	x0=(float) (x0*1.3);
+	x1=(float) (x1*1.5);
+	x2=(float) (x2*1.9);
+	}
 }
 
 }
