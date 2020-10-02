@@ -1,22 +1,36 @@
 package model;
 
 public class Logic {
+	public SunMoon sun;
 	
 Brothers bro;
 Bird paloma;
-Campfire fire;
-SunMoon sun;
+  
+paloma = new Bird;
+
+fire = new Campfire ;
 
 
 
 
 
-public void flyG() {
+public void draw() {
+	
+	
 	
 }
-public void flyB() {
+public void mousepressed() {
+	
 	
 }
+
+public void read() {
+	
+	
+}
+	
+	
+
 public void night() {
 	
 }
@@ -26,6 +40,7 @@ public void fire() {
 public void bread() {
 	
 }
+
 public void backMove(float x0,float x1,float x2) {
 	
 	
