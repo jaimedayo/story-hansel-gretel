@@ -5,7 +5,11 @@ import processing.core.PApplet;
 
 
 public class Logic {
+	
+	
 	private PApplet app;
+	
+	//setting image
 PImage back;
 	PImage  floor;
 	PImage  fireon;
@@ -19,9 +23,12 @@ PImage back;
 	PImage  skym;
 	PImage  skyn;
 	PImage  sun;
+	
 boolean mb;
 
 public Logic(PApplet app) {
+	
+	//initialize or load image
 	this.app = app;
 
 	back = app.loadImage("img/back.png");
@@ -40,14 +47,18 @@ public Logic(PApplet app) {
 	setup();
 }
 	
-	
-	float breadx;
+	//position of the slice of bread
+
+float breadx;
 float bready;
+
+//Objects
 SunMoon s;
 Campfire fire;	
 Brothers bro;
 Bird p;
 
+//variable for paralax efect
 float x0,x1,x2;
 
  
@@ -70,19 +81,14 @@ bro = new Brothers(350,400,false);
 
 public void draw() {
 	
-	
+	//elemets in screen
 	hour();
 	back();
-	
 	kid();
-	
 	fire();
-	
-	
-	
 	flyG(150,450,100,90);
 	
-	
+	//control text
 	if(mb) {
 		app.textSize(16);
 		app.text("you can move the back grond with the kay-right and key-left", 80,50);
@@ -146,7 +152,7 @@ public void read() {
 		
 
 }
-
+//draw the character hansel, gretel and the slice of bread
 
 public void kid() {
 	
@@ -156,6 +162,7 @@ public void kid() {
 	bread(bro.posX,(bro.posY+90),150,450);
 	}
 
+//draw the character bird and control it movement
 
 public void flyG(float x,float y,float x1,float y1){
 	
@@ -175,6 +182,8 @@ public void flyG(float x,float y,float x1,float y1){
 		}
 		}
 
+//draw the sun or moon and the sky of below
+
 public void hour() {
 	if(s.state) {
 		app.image(skym, 0, 0);
@@ -186,7 +195,7 @@ public void hour() {
 	
 }
 
-
+//draw the character hansel, gretel and state of this one
 public void fire() {
 	if(fire.state) {
 	app.image (fireon,fire.posX,fire.posY);
@@ -194,7 +203,7 @@ public void fire() {
 	app.image (fireoff,fire.posX,fire.posY);
 			}
 }
-
+//control the position of the slice of bread
 
 public void bread(float ix,float iy,float fx,float fy) {
 	if(bro.getBread()) {
@@ -204,7 +213,7 @@ public void bread(float ix,float iy,float fx,float fy) {
 	}
 
 }
-
+//do the paralax efect
 public void backMove() {
 	
 	if(x0<=50) {
@@ -221,6 +230,7 @@ public void backMove1() {
 	x2=x2+15;
 	}
 	}
+//draw the back
 
 	public void back() {
 

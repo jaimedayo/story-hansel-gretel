@@ -1,18 +1,20 @@
 package controller;
 
+
+//import the package
 import model.Logic;
 import processing.core.PApplet;
-import view.Mainscreen;
+
 
 
 
 
 public class Controller {
 			private Logic logic;
-	private Mainscreen mainscreen;
+
 
 	
-	
+	//the object logic is being initialized
 	 PApplet app;
 	public Controller( PApplet app) {
 	
@@ -21,14 +23,8 @@ public class Controller {
 	}
 
 	
-public void start() {
-	mainscreen= new Mainscreen();
-	
-	
-	
-	
-	
-	}
+
+//the methods of logic are prepared to be send to Mainscreen
 public void draw() {
 	
 	logic.draw();
