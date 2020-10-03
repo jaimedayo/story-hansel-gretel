@@ -56,7 +56,7 @@ public void setup() {
 	x0=0;
 	x1=0;
 	x2=0;
-mb=false;
+mb=true;
   
 s = new SunMoon(400,90,false);
 
@@ -82,10 +82,11 @@ public void draw() {
 	
 	flyG(150,450,100,90);
 	
-	if(mb) {
-		backMove();
-	}
 	
+	if(mb) {
+		app.textSize(16);
+		app.text("you can move the back grond with the kay-right and key-left", 80,50);
+	}
 	
 }
 
@@ -133,11 +134,10 @@ if(app.mouseX>=150&&app.mouseX<=180  &&  app.mouseY>=450&&app.mouseY<=480 ) {
 	
 }
 public void keyPressed() {
-	if(app.keyCode==app.RIGHT&&x0>=(-50)) {
-	
-		 backMove();
-	}
+	if(app.keyCode==app.RIGHT&&x0>=(-50)) {	backMove(); }
 
+	if(app.keyCode==app.LEFT&&x0<=(0)) {	backMove1(); }
+	mb=false;
 	}
 
 public void read() {
@@ -211,7 +211,16 @@ public void backMove() {
 	x0=x0-1;
 	x1=x1-8;
 	x2=x2-15;
-	}}
+	}
+	}
+public void backMove1() {
+	
+	if(x0<0) {
+	x0=x0+1;
+	x1=x1+8;
+	x2=x2+15;
+	}
+	}
 
 	public void back() {
 
