@@ -19,6 +19,7 @@ PImage back;
 	PImage  skym;
 	PImage  skyn;
 	PImage  sun;
+boolean mb;
 
 public Logic(PApplet app) {
 	this.app = app;
@@ -47,7 +48,6 @@ Campfire fire;
 Brothers bro;
 Bird p;
 
-
 float x0,x1,x2;
 
  
@@ -56,13 +56,13 @@ public void setup() {
 	x0=0;
 	x1=0;
 	x2=0;
-
+mb=false;
   
 s = new SunMoon(400,90,false);
 
-p = new Bird(470,100,false);
+p = new Bird(300,90,false);
 
-fire = new Campfire(150,430,false) ;
+fire = new Campfire(200,430,false) ;
 
 bro = new Brothers(350,400,false);
 
@@ -80,11 +80,15 @@ public void draw() {
 	
 	
 	
-	flyG(150,450,170,100);
+	flyG(150,450,100,90);
 	
+	if(mb) {
+		backMove();
+	}
 	
 	
 }
+
 public void mousepressed() {
 	
 	//sun controller
@@ -118,7 +122,7 @@ if(app.mouseX>=p.posX&&app.mouseX<=(p.posX+100)  &&  app.mouseY>=p.posY&&app.mou
 
 
 //bird go down controller
-if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
+if(app.mouseX>=150&&app.mouseX<=180  &&  app.mouseY>=450&&app.mouseY<=480 ) {
 	
 	if(bro.getBread()) {
 		p.setflyG();
@@ -129,8 +133,9 @@ if(app.mouseX>=100&&app.mouseX<=200  &&  app.mouseY>=100&&app.mouseY<=200 ) {
 	
 }
 public void keyPressed() {
-	if(app.keyCode==app.RIGHT) {
-	backMove();
+	if(app.keyCode==app.RIGHT&&x0>=(-50)) {
+	
+		 backMove();
 	}
 
 	}
@@ -146,10 +151,9 @@ public void read() {
 public void kid() {
 	
 	app.image(kids,bro.getx(),bro.gety());
-	if(bro.getBread()) {
+	
 		
-	bread(bro.posX,bro.posY,150,450);
-	}
+	bread(bro.posX,(bro.posY+90),150,450);
 	}
 
 
@@ -181,15 +185,6 @@ public void hour() {
 	}
 	
 }
-public void day() {
-	if(s.getState()) {
-		s.setDay();
-	}else {
-		s.setNight();
-	}
-	
-}
-
 
 
 public void fire() {
@@ -199,32 +194,25 @@ public void fire() {
 	app.image (fireoff,fire.posX,fire.posY);
 			}
 }
-	public void controlFire() {
-		if(fire.getState()) {
-			fire.setFireOn();
-		}else {
-			fire.setFireOff();
-		}
-	
-}
 
-	
+
 public void bread(float ix,float iy,float fx,float fy) {
+	if(bro.getBread()) {
+	app.image (migajas,fx, fy);
+	}else {
 	app.image (migajas,ix, iy);
-	if(ix < fx) {ix++;}else {ix--;}
-	if(iy < fy) {iy++;}else {iy--;}
-	
-	
+	}
 
 }
 
 public void backMove() {
 	
 	if(x0<=50) {
-	x0=-5;
-	x1=-10;
-	x2=-20;
+	x0=x0-1;
+	x1=x1-8;
+	x2=x2-15;
 	}}
+
 	public void back() {
 
 		app.image(back, x0, 200);
