@@ -12,6 +12,12 @@ public class Brothers extends Elements{
 public boolean getBread() {
 	return state;
 }
+public float getx() {
+	return posX;
+}
+public float gety() {
+	return posY;
+}
 public void setBreadOn() {
 	state=true;
 }

@@ -1,31 +1,12 @@
 package model;
 import processing.core.PImage;
 import processing.core.PApplet;
-import java.io.*;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
-
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 
 
 
 public class Logic {
 	private PApplet app;
-
-
-public Logic(PApplet app) {
-	this.app = app;
-	
-}
-	PImage back;
+PImage back;
 	PImage  floor;
 	PImage  fireon;
 	PImage  fireoff;
@@ -38,6 +19,26 @@ public Logic(PApplet app) {
 	PImage  skym;
 	PImage  skyn;
 	PImage  sun;
+
+public Logic(PApplet app) {
+	this.app = app;
+
+	back = app.loadImage("img/back.png");
+	floor = app.loadImage("img/floor.png");
+	ave = app.loadImage("img/ave.png");
+	fireon = app.loadImage("img/fireOn.png");
+	fireoff = app.loadImage("img/fireOff.png");
+	fondo = app.loadImage("img/fondo 1.png");
+	forest = app.loadImage("img/forest.png");
+	kids = app.loadImage("img/kids.png");
+	migajas = app.loadImage("img/migaja.png");
+	moon = app.loadImage("img/moon.png");
+	skyn = app.loadImage("img/skyn.png");
+	skym = app.loadImage("img/skym.png");
+	sun = app.loadImage("img/sun.png");
+	setup();
+}
+	
 	
 	float breadx;
 float bready;
@@ -49,9 +50,7 @@ Bird p;
 
 float x0,x1,x2;
 
- 	public void settings() {
-		app.size(600,600);
-	}
+ 
 public void setup() {
 	
 	x0=0;
@@ -59,20 +58,20 @@ public void setup() {
 	x2=0;
 
   
-s = new SunMoon(400,90,true);
+s = new SunMoon(400,90,false);
 
-p = new Bird(470,100,true);
+p = new Bird(470,100,false);
 
-fire = new Campfire(150,430,true) ;
+fire = new Campfire(150,430,false) ;
 
-bro = new Brothers(450,400,true);
+bro = new Brothers(350,400,false);
 
 	}
 
 public void draw() {
 	
-	hour();
 	
+	hour();
 	back();
 	
 	kid();
@@ -90,15 +89,14 @@ public void mousepressed() {
 	
 	//sun controller
 if(app.mouseX>=s.posX&&app.mouseX<=(s.posX+133)  &&  app.mouseY>=s.posY&&app.mouseY<=(s.posY+233) ) {
-		
-	day();
+	if(s.state) {s.setNight();}	else {s.setDay();}
 	}
 	
 
 	//fire controller
 if(app.mouseX>=fire.posX&app.mouseX<=(fire.posX+102)  &&  app.mouseY>=fire.posY&&app.mouseY<=fire.posY+81 ) {
 	
-	controlFire();
+	if(fire.state) {fire.setFireOff();}else {fire.setFireOn();}
 	}
 
 
@@ -134,45 +132,20 @@ public void keyPressed() {
 	if(app.keyCode==app.RIGHT) {
 	backMove();
 	}
+
 	}
 
-public void read() throws IOException {
+public void read() {
 	
 	
-		List<String> lista =new ArrayList<>();
-		try(FileReader	fr	= new FileReader("text/cuento.txt");
-		BufferedReader br=new BufferedReader(fr)){
-String linea;
-
-while((linea = br.readLine()) != null) {
-	lista.add(linea);
-}
-
-System.out.println("Cantidad de registros: " + lista.size());
-
-String [] arreglo = new String[lista.size()]; // Copiar el contenido de la lista a un arreglo de Strings, esto es opcional pero seguramente es una tarea escolar
-for(int i = 0; i < lista.size(); i++)
-{
-    arreglo[i] = lista.get(i);
-}
-
-System.out.println(Arrays.toString(arreglo));
-} 
-catch (FileNotFoundException e)
-{
-e.printStackTrace();
-} 
-catch (IOException e)
-{
-e.printStackTrace();
-}
+		
 
 }
 
 
 public void kid() {
 	
-	app.image(kids,bro.posX,bro.posY);
+	app.image(kids,bro.getx(),bro.gety());
 	if(bro.getBread()) {
 		
 	bread(bro.posX,bro.posY,150,450);
@@ -237,26 +210,26 @@ public void fire() {
 
 	
 public void bread(float ix,float iy,float fx,float fy) {
-	
+	app.image (migajas,ix, iy);
 	if(ix < fx) {ix++;}else {ix--;}
 	if(iy < fy) {iy++;}else {iy--;}
 	
-	app.image (migajas,ix, iy);
+	
 
 }
 
 public void backMove() {
 	
 	if(x0<=50) {
-	x0=(float) (x0*1.3);
-	x1=(float) (x1*1.5);
-	x2=(float) (x2*1.9);
+	x0=-5;
+	x1=-10;
+	x2=-20;
 	}}
 	public void back() {
 
-		app.image(back, x0, 100);
-		app.image(floor,x1,200);
-		app.image (forest,x2,0);
+		app.image(back, x0, 200);
+		app.image(floor,x2,200);
+		app.image (forest,x1,200);
 	}
 	
 }

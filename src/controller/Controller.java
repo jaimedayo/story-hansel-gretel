@@ -8,23 +8,23 @@ import view.Mainscreen;
 
 
 public class Controller {
-		
-	 PApplet app;
-	public Controller( PApplet app) {
-	
-	
-	this.app = app;
-	}
-	private Logic logic;
+			private Logic logic;
 	private Mainscreen mainscreen;
 
 	
 	
+	 PApplet app;
+	public Controller( PApplet app) {
+	
+	logic = new Logic(app);
+	this.app = app;
+	}
+
 	
 public void start() {
 	mainscreen= new Mainscreen();
 	
-	logic = new Logic(app);
+	
 	
 	
 	
@@ -32,15 +32,9 @@ public void start() {
 public void draw() {
 	
 	logic.draw();
-	logic.hour();
-	logic.back();
-	logic.kid();
-	logic.fire();
 
-	logic.flyG(150,450,170,100);
-	
-	
 }
+
 public void mouse() {
 	logic.mousepressed();
 	

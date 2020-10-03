@@ -47,65 +47,56 @@ public void setup() {
 
 	controller = new Controller(this); 
 	
-	back = loadImage("img/back.png");
-	floor = loadImage("img/floor.png");
-	ave = loadImage("img/ave.png");
-	fireon = loadImage("img/fireOn.png");
-	fireoff = loadImage("img/fireOff.png");
-	fondo = loadImage("img/fondo 1.png");
-	forest = loadImage("img/forest.png");
-	kids = loadImage("img/kids.png");
-	migajas = loadImage("img/migaja.png");
-	moon = loadImage("img/moon.png");
-	skyn = loadImage("img/skyn.png");
-	skym = loadImage("img/skym.png");
-	sun = loadImage("img/sun.png");
-	try {
 		read();
-	} catch (IOException e) {
+	
 		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	}
+	
+	
+	
 
-
+}
 
 public void draw(){
-}
-
-public void read() throws IOException {
 	
+	controller.draw();
+}
+public void mousePressed() {
+	controller.mouse();
+}
+public void keyPressed() {
+	controller.key();
+}
+
+public void read() {
 	
-	List<String> lista =new ArrayList<>();
-	try(FileReader	fr	= new FileReader("text/cuento.txt");
-	BufferedReader br=new BufferedReader(fr)){
-String linea;
 
-while((linea = br.readLine()) != null) {
-lista.add(linea);
-}
+	String lista2 [] = null  ;
+	String lista1 []; 
 
-System.out.println("Cantidad de registros: " + lista.size());
+	lista1 = loadStrings("text/cuento.txt");
 
-String [] arreglo = new String[lista.size()]; // Copiar el contenido de la lista a un arreglo de Strings, esto es opcional pero seguramente es una tarea escolar
-for(int i = 0; i < lista.size(); i++)
-{
-arreglo[i] = lista.get(i);
 
-}
+	for(int i =0; i < lista1.length; i++){
 
-System.out.println(Arrays.toString(arreglo));
-} 
-catch (FileNotFoundException e)
-{
-e.printStackTrace();
-} 
-catch (IOException e)
-{
-e.printStackTrace();
-}
 
-}
+		
+	
+	lista2 = lista1[i].split(" ");
+	
+	if(lista2[i].equals("una")) {
+	
 
 
 }
+	println(lista2[1]);
+}
+}}
+
+
+
+
+
+
+
+
+
